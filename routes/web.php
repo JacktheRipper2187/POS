@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\PageController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/category/{slug}', [PageController::class, 'products'])->name('products');
+Route::get('/user/{id}/name/{name}', [PageController::class, 'user'])->name('user');
+Route::get('/sales', [PageController::class, 'sales'])->name('sales');
